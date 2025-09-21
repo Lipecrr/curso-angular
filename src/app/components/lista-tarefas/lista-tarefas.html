@@ -1,0 +1,16 @@
+<div style="margin-top: 10px;">
+    <label for="campo-tarefa">Tarefa</label>
+    <input type="text" id="campo-tarefa" [(ngModel)]="pegarTarefa">
+    <label for="campo-data">Data</label>
+    <input type="date" id="campo-data" [(ngModel)]="data">
+    <button (click)="adicicionar()">Adicionar</button>
+</div>
+<div>
+    <h2>Lista de tarefas</h2>
+    <ul>
+        @for(tarefa of tarefas; track tarefa){
+            <li>{{tarefa}}
+                <button (click)="apagar(tarefa)">❌</button></li>
+        }
+    </ul>
+</div>
