@@ -1,0 +1,36 @@
+<div class="botao-cadastro">
+    <a routerLink="/cadastro-professor">Cadastro</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de nascimento</th>
+            <th>CNPJ</th>
+            <th>PIX</th>
+            <th>Nome fantasia</th>
+            <th>Valor hora</th>
+            <th>Celular</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(professor of professores; track professor) {
+        <tr>
+            <td>{{professor.nome}}</td>
+            <td>{{professor.cpf}}</td>
+            <td>{{professor.dataDeNascimento | date:'dd/MM/yyyy':''}}</td>
+            <td>{{professor.cnpj}}</td>
+            <td>{{professor.pix}}</td>
+            <td>{{professor.nomeFantasia}}</td>
+            <td>{{professor.valorHora}}</td>
+            <td>{{professor.celular}}</td>
+            <td>
+                <button (click)="apagar(professor)">Apagar</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

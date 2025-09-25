@@ -1,0 +1,20 @@
+<div class="botao-cadastro">
+    <a routerLink="/cadastro-materia">Cadastro</a>
+</div>
+
+<table>
+    <thead>
+        <th>Materia</th>
+        <th></th>
+    </thead>
+    <tbody>
+        @for(materia of materias; track materia) {
+        <tr>
+            <td>{{materia.nome}}</td>
+            <td>
+                <button (click)="apagar(materia)">Apagar</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

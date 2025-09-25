@@ -1,0 +1,35 @@
+<div>
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" [(ngModel)]="nome" placeholder="Digite seu nome completo">
+</div>
+<div>
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" [(ngModel)]="cpf" placeholder="000.000.000-00">
+</div>
+<div>
+    <label for="data-nascimento">Data de nascimento</label>
+    <input type="date" id="data-nascimento" [(ngModel)]="dataDeNascimento" placeholder="dd/mm/aaaa">
+</div>
+<div>
+    <label for="cnpj">CNPJ</label>
+    <input type="text" id="cnpj" [(ngModel)]="cnpj" placeholder="00.000.000/0000-00">
+</div>
+<div>
+    <label for="pix">PIX</label>
+    <input type="text" id="pix" [(ngModel)]="pix" placeholder="Chave PIX (CPF, e-mail ou aleatória)">
+</div>
+<div>
+    <label for="nome-fantasia">Nome fantasia</label>
+    <input type="text" id="nome-fantasia" [(ngModel)]="nomeFantasia" placeholder="Digite o nome fantasia da empresa">
+</div>
+<div>
+    <label for="valor-hora">Valor hora</label>
+    <input type="number" id="valor-hora" [(ngModel)]="valorHora" placeholder="R$ por hora">
+</div>
+<div>
+    <label for="celular">Celular</label>
+    <input type="text" id="celular" [(ngModel)]="celular" placeholder="(00) 00000-0000">
+</div>
+<div class="botao=cadastro">
+    <button (click)="salvar()">Salvar</button>
+</div>
