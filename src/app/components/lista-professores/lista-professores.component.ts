@@ -11,6 +11,7 @@ interface Professor {
   nomeFantasia: string;
   valorHora: number;
   celular: string;
+  geracao: string;
 }
 
 @Component({
@@ -21,7 +22,7 @@ interface Professor {
 })
 export class ListaProfessores {
   professores: Professor[];
-
+  geracao: string = "";
   constructor() {
     this.professores = this.carregarProfessoresLocalStorage();
   }

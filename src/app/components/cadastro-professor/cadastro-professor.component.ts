@@ -11,6 +11,7 @@ interface Professor {
   nomeFantasia: string;
   valorHora: number;
   celular: string;
+  geracao: string;
 }
 
 @Component({
@@ -30,6 +31,7 @@ export class CadastroProfessor {
   nomeFantasia: string = "";
   valorHora?: number;
   celular: string = "";
+  geracao: string = "";
 
   constructor(private router: Router) {
     this.professores = this.carregarProfessoresLocalStorage();
@@ -45,6 +47,7 @@ export class CadastroProfessor {
       nomeFantasia: this.nomeFantasia,
       valorHora: this.valorHora!,
       celular: this.celular,
+      geracao: this.validarGeracao(this.dataDeNascimento!)
     }
 
     this.professores.push(professor);
@@ -67,4 +70,23 @@ export class CadastroProfessor {
     let professores: Professor[] = JSON.parse(professoresDoLocalStorage);
     return professores;
   }
+
+validarGeracao(dataDeNascimento: Date): string {  
+  let ano = new Date(dataDeNascimento).getFullYear();
+  if (ano >= 1928 && ano <= 1945) {
+    return "Geração Silenciosa";
+  } else if (ano >= 1946 && ano <= 1964) {
+    return "Baby Boomers";
+  } else if (ano >= 1965 && ano <= 1980) {
+    return "Geração X";
+  } else if (ano >= 1981 && ano <= 1996) {
+    return "Millennials";
+  } else if (ano >= 1997 && ano <= 2012) {
+    return "Geração Z";
+  } else if (ano >= 2013 && ano <= 2025) {
+    return "Geração Alpha";
+  } else {
+    return "Não definida";
+  }
+}
 }
