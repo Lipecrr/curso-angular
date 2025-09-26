@@ -28,7 +28,7 @@
             <td>{{professor.nomeFantasia}}</td>
             <td>{{professor.valorHora}}</td>
             <td>{{professor.celular}}</td>
-            <td>{{professor.geracao}}</td>
+            <td>{{validarGeracao(professor.dataDeNascimento)}}</td>
             <td>
                 <button (click)="apagar(professor)">Apagar</button>
             </td>

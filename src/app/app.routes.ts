@@ -15,18 +15,19 @@ import { ListaProfessores } from './components/lista-professores/lista-professor
 import { CadastroMateriaComponent } from './components/cadastro-materia/cadastro-materia.component';
 //SPA: Single Page Aplication
 export const routes: Routes = [
-    {path: "calculadora", component: Calculadora},
-    {path: "lista-pessoas", component: ListaPessoas},
-    {path: "calculadora-retangulo", component: CalculadoraRetangulo},
-    {path: "calculadora-media", component: CalculadoraMedia},
-    {path: "calculadora-temperatura", component: CalculadoraTemperatura},
-    {path: "lista-tarefas", component: ListaTarefas},
-    {path: "lista-alunos", component: ListaAlunos},
-    {path: "cadastro-aluno", component: CadastroAluno},
-    {path: "lista-turmas", component: ListaTurmas},
-    {path: "cadastro-turma", component: CadastroTurma},
-    {path: "lista-materias", component: ListaMaterias},
-    {path: "cadastro-materia", component: CadastroMateriaComponent},
-    {path: "cadastro-professor", component: CadastroProfessor},
-    {path: "lista-professores", component: ListaProfessores}
+    { path: "calculadora", component: Calculadora },
+    { path: "lista-pessoas", component: ListaPessoas },
+    { path: "calculadora-retangulo", component: CalculadoraRetangulo },
+    { path: "calculadora-media", component: CalculadoraMedia },
+    { path: "calculadora-temperatura", component: CalculadoraTemperatura },
+    { path: "lista-tarefas", component: ListaTarefas },
+    { path: "lista-alunos", component: ListaAlunos },
+    { path: "cadastro-aluno", component: CadastroAluno },
+    { path: "alunos/editar/:id", component: CadastroAluno },
+    { path: "lista-turmas", component: ListaTurmas },
+    { path: "cadastro-turma", component: CadastroTurma },
+    { path: "lista-materias", component: ListaMaterias },
+    { path: "cadastro-materia", component: CadastroMateriaComponent },
+    { path: "cadastro-professor", component: CadastroProfessor },
+    { path: "lista-professores", component: ListaProfessores }
 ];
