@@ -47,9 +47,9 @@ export class CadastroAluno {
   preencherCamposParaEditar(): void {
     let aluno = this.alunos.filter(aluno => aluno.id === this.idEditar)[0];
     this.nome = aluno.nome;
-    this.nota1 = aluno.nota1
-    this.nota2 = aluno.nota2
-    this.nota3 = aluno.nota3
+    this.nota1 = aluno.nota1;
+    this.nota2 = aluno.nota2;
+    this.nota3 = aluno.nota3;
     this.frequencia = aluno.frequencia;
   }
   //Método

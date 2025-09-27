@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 interface Materia {
+  id: string;
   nome: string;
 }
 
@@ -15,7 +16,7 @@ export class ListaMaterias {
 
   materias: Materia[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.materias = this.materias = this.carregarMateriasLocalStorage();
   }
 
@@ -33,6 +34,10 @@ export class ListaMaterias {
     let indiceParaApagar = this.materias.indexOf(materia);
     this.materias.splice(indiceParaApagar, 1);
     this.salvarLocalStorage();
+  }
+
+  editar(materia: Materia): void {
+    this.router.navigate([`/materias/editar/${materia.id}`])
   }
 
   salvarLocalStorage(): void {

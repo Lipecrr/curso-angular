@@ -87,6 +87,21 @@ td:nth-child(4):contains("Reprovado") {
     /* Vermelho para reprovado */
 }
 
+button {
+    padding: 0.4rem 0.8rem;
+    background: #9333ea;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #a855f7;
+}
+
 .botao-cadastro {
     display: flex;
     flex-wrap: nowrap;

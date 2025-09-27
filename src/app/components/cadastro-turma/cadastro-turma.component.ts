@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface Turma {
+  id: string;
   nome: string;
   sigla: string;
 }
@@ -16,21 +17,53 @@ interface Turma {
 export class CadastroTurma {
   turmas: Turma[];
 
-  nomeTurma: string = "";
+  nome: string = "";
   sigla: string = "";
 
-  constructor(private router: Router) {
+  idEditar?: string;
+
+  constructor(
+    private router: Router,
+    private activatedRouter: ActivatedRoute,
+  ) {
     this.turmas = this.carregarTurmasLocalStorage();
+    let idParaEditar = this.activatedRouter.snapshot.paramMap.get("id");
+
+    if (idParaEditar !== null) {
+      this.idEditar = idParaEditar.toString();
+      this.preencherCamposParaEditar();
+    }
+  }
+  preencherCamposParaEditar(): void {
+    let turma = this.turmas.filter(turma => turma.id === this.idEditar)[0];
+    this.nome = turma.nome;
+    this.sigla = turma.sigla;
   }
 
   salvar(): void {
+    if (this.idEditar === undefined) {
+      this.cadastroTurma();
+    } else {
+      this.editarTurma();
+    }
+    this.salvarLocalStorage();
+    this.router.navigate(["/lista-turmas"])
+  }
+  
+  editarTurma() {
+    let indiceLista = this.turmas.findIndex(turma => turma.id === this.idEditar);
+
+    this.turmas[indiceLista].nome = this.nome;
+    this.turmas[indiceLista].sigla = this.sigla;
+  }
+
+  cadastroTurma() {
     let turma: Turma = {
-      nome: this.nomeTurma,
+      id: crypto.randomUUID(),
+      nome: this.nome,
       sigla: this.sigla,
     }
     this.turmas.push(turma);
-    this.salvarLocalStorage();
-    this.router.navigate(["/lista-turmas"])
   }
 
   carregarTurmasLocalStorage(): Turma[] {

@@ -25,9 +25,12 @@ export const routes: Routes = [
     { path: "cadastro-aluno", component: CadastroAluno },
     { path: "alunos/editar/:id", component: CadastroAluno },
     { path: "lista-turmas", component: ListaTurmas },
+    { path: "turmas/editar/:id", component: CadastroTurma },
     { path: "cadastro-turma", component: CadastroTurma },
     { path: "lista-materias", component: ListaMaterias },
     { path: "cadastro-materia", component: CadastroMateriaComponent },
+    { path: "materias/editar/:id", component: CadastroMateriaComponent },
     { path: "cadastro-professor", component: CadastroProfessor },
-    { path: "lista-professores", component: ListaProfessores }
+    { path: "lista-professores", component: ListaProfessores },
+    { path: "professores/editar/:id", component: CadastroProfessor },
 ];

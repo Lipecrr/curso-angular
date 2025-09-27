@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 interface Professor {
+  id: string;
   nome: string;
   cpf: string;
   dataDeNascimento: Date;
@@ -22,7 +23,7 @@ interface Professor {
 export class ListaProfessores {
   professores: Professor[];
   geracao: string = "";
-  constructor() {
+  constructor(private router: Router) {
     this.professores = this.carregarProfessoresLocalStorage();
   }
 
@@ -40,6 +41,10 @@ export class ListaProfessores {
     let indiceParaApagar = this.professores.indexOf(professor);
     this.professores.splice(indiceParaApagar, 1);
     this.salvarLocalStorage();
+  }
+
+  editar(professor: Professor): void {
+    this.router.navigate([`/professores/editar/${professor.id}`])
   }
 
   salvarLocalStorage(): void {

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 interface Turma {
+  id: string;
   nome: string;
   sigla: string;
 }
@@ -34,6 +35,10 @@ export class ListaTurmas {
     let indiceParaApagar = this.turmas.indexOf(turma);
     this.turmas.splice(indiceParaApagar, 1);
     this.salvarLocalStorage();
+  }
+  
+  editar(turma: Turma): void {
+    this.router.navigate([`/turmas/editar/${turma.id}`])
   }
 
   salvarLocalStorage(): void {

@@ -30,6 +30,7 @@
             <td>{{professor.celular}}</td>
             <td>{{validarGeracao(professor.dataDeNascimento)}}</td>
             <td>
+                <button (click)="editar(professor)">Editar</button>
                 <button (click)="apagar(professor)">Apagar</button>
             </td>
         </tr>

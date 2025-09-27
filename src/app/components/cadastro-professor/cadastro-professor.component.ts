@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface Professor {
+  id: string;
   nome: string;
   cpf: string;
   dataDeNascimento: Date;
@@ -31,12 +32,61 @@ export class CadastroProfessor {
   valorHora?: number;
   celular: string = "";
 
-  constructor(private router: Router) {
+  idEditar?: string;
+
+  constructor(
+    private router: Router,
+    private activatedRouter: ActivatedRoute,
+  ) {
     this.professores = this.carregarProfessoresLocalStorage();
+    let idParaEditar = this.activatedRouter.snapshot.paramMap.get("id");
+    
+    if (idParaEditar !== null) {
+      this.idEditar = idParaEditar.toString();
+
+      this.preencherCamposParaEditar();
+    }
+  }
+
+  preencherCamposParaEditar() {
+    let professor = this.professores.filter(professor => professor.id === this.idEditar)[0];
+    this.nome = professor.nome;
+    this.cpf = professor.cpf;
+    this.dataDeNascimento = professor.dataDeNascimento;
+    this.cnpj = professor.cnpj;
+    this.pix = professor.pix;
+    this.nomeFantasia = professor.nomeFantasia;
+    this.valorHora = professor.valorHora;
+    this.celular = professor.celular;
   }
 
   salvar(): void {
+    if (this.idEditar === undefined) {
+      this.cadastrarProfessor();
+    } else {
+      this.editarProfessor();
+    }
+    
+    this.salvarLocalStorage();
+    this.router.navigate(["/lista-professores"]);
+  }
+
+  editarProfessor(): void {
+    let indiceLista = this.professores.findIndex(professor => professor.id === this.idEditar);
+
+    this.professores[indiceLista].nome = this.nome;
+    this.professores[indiceLista].cpf = this.cpf;
+    this.professores[indiceLista].dataDeNascimento = this.dataDeNascimento!;
+    this.professores[indiceLista].cnpj = this.cnpj;
+    this.professores[indiceLista].pix = this.pix;
+    this.professores[indiceLista].nomeFantasia = this.nomeFantasia;
+    this.professores[indiceLista].valorHora = this.valorHora!;
+    this.professores[indiceLista].celular = this.celular;
+  }
+
+  cadastrarProfessor(): void {
     let professor: Professor = {
+      id: crypto.randomUUID(),  
       nome: this.nome,
       cpf: this.cpf,
       dataDeNascimento: this.dataDeNascimento!,
@@ -48,8 +98,7 @@ export class CadastroProfessor {
     }
 
     this.professores.push(professor);
-    this.salvarLocalStorage();
-    this.router.navigate(["/lista-professores"]);
+
   }
 
   salvarLocalStorage(): void {
