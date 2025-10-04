@@ -4,10 +4,11 @@ import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { CategoriaResponse } from '../../../models/categoria.dto';
 import { CategoriaService } from '../../../services/categoria.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'categoria-list',
-  imports: [ButtonModule, TableModule, CommonModule],
+  imports: [ButtonModule, TableModule, CommonModule, RouterLink],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
@@ -18,9 +19,20 @@ export class CategoriaList {
   }
 
   ngOnInit(){
+    this.carregarCategorias();
+  }
+
+  private carregarCategorias() {
     this.categoriaService.getAll().subscribe({
       next: categorias => this.categorias = categorias,
       error: erro => alert("Não foi possível carregar as categorias")
+    });
+  }
+
+  apagar(id: number){
+    this.categoriaService.delete(id).subscribe({
+      next: categorias => this.carregarCategorias(),
+      error: erro => alert("Não foi possível apagar a categoria")
     })
   }
 }

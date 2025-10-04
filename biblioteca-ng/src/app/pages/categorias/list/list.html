@@ -1,5 +1,5 @@
 <div class="flex justify-content-end mr-2 mt-2">
-    <p-button label="Cadastrar" severity="info" />
+    <p-button label="Cadastrar" severity="info" routerLink="cadastrar"/>
 </div>
 
 <p-table [value]="categorias" [tableStyle]="{ 'min-width': '50rem' }">
@@ -15,7 +15,17 @@
             <td>{{ categoria.id }}</td>
             <td>{{ categoria.nome }}</td>
             <td>
-
+                <p-button
+                    label="Editar"
+                    icon="pi pi-pencil"
+                    severity="warn"
+                    routerLink="/categorias/editar/{{categoria.id}}"/>
+                 
+                <p-button
+                    (click)="apagar(categoria.id)"
+                    label="Apagar"
+                    icon="pi pi-trash"
+                    outlined severity="danger"/>
             </td>
         </tr>
     </ng-template>
