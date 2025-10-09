@@ -1,34 +1,31 @@
 <div class="flex justify-content-end mr-2 mt-2">
     <p-button label="Cadastrar" severity="info" icon="pi pi-plus" routerLink="cadastrar" />
 </div>
-<p-table [value]="alunos" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="cursos" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template #header>
         <tr>
             <th>Código</th>
             <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>CPF</th>
             <th></th>
         </tr>
     </ng-template>
-    <ng-template #body let-aluno>
+    <ng-template #body let-curso>
         <tr>
-            <td>{{ aluno.id }}</td>
-            <td>{{ aluno.nome + " " + aluno.sobrenome }}</td>
-            <td>{{ aluno.dataNascimento | date:'dd/MM/yyyy' }}</td>
-            <td>{{ aluno.cpf }}</td>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nome }}</td>
+            <td>{{ curso.sigla }}</td>
             <td class="flex gap-2">
                 <p-button
                 label="Editar"
                 icon="pi pi-pencil"
                 severity="warn"
-                routerLink="/alunos/editar/{{aluno.id}}"/>
+                routerLink="/cursos/editar/{{curso.id}}"/>
 
                 <p-button 
-                (click)="apagar(aluno.id)" 
+                (click)="apagar(curso.id)" 
                 label="Apagar" 
                 icon="pi pi-trash" 
-                outlined severity="danger" /> 
+                outlined severity="danger" />             
             </td>
         </tr>
     </ng-template>

@@ -45,6 +45,11 @@ export class Navbar {
             icon: 'pi pi-user',
             routerLink: "alunos",
           },
+          {
+            label: 'Cursos',
+            icon: 'pi pi-user',
+            routerLink: "cursos",
+          },
         ]
       },
     ]
