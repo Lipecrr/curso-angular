@@ -1,36 +1,36 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LivroCadastroRequest } from '../models/livro.dto';
+import { LivroCadastroRequest, LivroResponse } from '../models/livro.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivroService {
-  url = "https://api.franciscosensaulas.com/api/v1/biblioteca/autores"
+
+  url = "https://api.franciscosensaulas.com/api/v1/biblioteca/livros"
 
   constructor(private httpClient: HttpClient) { }
 
-  create(form: LivroCadastroRequest): Observable<void> {
-    return this.httpClient.post<void>(this.url, form);
+  getAll(titulo: string | null): Observable<LivroResponse[]> {
+    let params = new HttpParams();
+    if (titulo) {
+      params = params.set('titulo', titulo.trim());
+    }
+
+    return this.httpClient.get<LivroResponse[]>(this.url, {params});
   }
-  // getAll(): Observable<LivroResponse[]> {
-  //   return this.httpClient.get<livroResponse[]>(this.url);
-  // }
 
-  // delete(id: number): Observable<void> {
-  //   const urlApagar = `${this.url}/${id}`;
-  //   return this.httpClient.delete<void>(urlApagar);
-  // }
+  create(form: LivroCadastroRequest): Observable<void> {
+    let formulario = {
+      ...form,
+      anoPublicacao: form.anoPublicacao!.getFullYear()
+    }
+    return this.httpClient.post<void>(this.url, formulario);
+  }
 
-  // getById(id: number): Observable<LivroResponse> {
-  //   const urlConsultarPorId = `${this.url}/${id}`;
-  //   return this.httpClient.get<LivroResponse>(urlConsultarPorId);
-  // }
-
-  // update(id: number, form: LivroEditarRequest): Observable<void> {
-  //   const urlAtualizar = `${this.url}/${id}`;
-  //   // PUT envia o corpo com os campos editáveis (ex.: { nome }).
-  //   return this.httpClient.put<void>(urlAtualizar, form);
-  // }
+  delete(id: number): Observable<void> {
+    const urlApagar = `${this.url}/${id}`;
+    return this.httpClient.delete<void>(urlApagar);
+  }
 }
