@@ -12,6 +12,13 @@ import { CursoList } from './pages/cursos/list/list';
 import { CursoCreate } from './pages/cursos/create/create';
 import { CursoEdit } from './pages/cursos/edit/edit';
 import { LivroList } from './pages/livros/list';
+import { LivroCreate } from './pages/livros/create';
+import { UsuarioList } from './pages/usuarios/list/list';
+import { UsuarioCreate } from './pages/usuarios/create/create';
+import { EmprestimoList } from './pages/emprestimos/list/list';
+import { EmprestimoCreate } from './pages/emprestimos/create/create';
+import { UsuarioEdit } from './pages/usuarios/edit/edit';
+import { EmprestimoEdit } from './pages/emprestimos/edit/edit';
 
 export const routes: Routes = [
     { path: "categorias", component: CategoriaList },
@@ -31,7 +38,15 @@ export const routes: Routes = [
     { path: "cursos/editar/:id", component: CursoEdit },
 
     { path: "livros", component: LivroList },
+    { path: "livros/cadastrar", component: LivroCreate },
 
+    { path: "usuarios", component: UsuarioList },
+    { path: "usuarios/cadastrar", component: UsuarioCreate },
+    { path: "usuarios/editar/:id", component: UsuarioEdit },
+    
 
+    { path: "emprestimos", component: EmprestimoList },
+    { path: "emprestimos/cadastrar", component: EmprestimoCreate },
+    { path: "emprestimos/editar/:id", component: EmprestimoEdit },
     
 ];

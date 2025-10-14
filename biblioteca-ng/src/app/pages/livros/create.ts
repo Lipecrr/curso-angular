@@ -164,13 +164,6 @@ import { StepsModule } from 'primeng/steps';
           </p-step-panel>
         </p-step-panels>
       </p-stepper>
-
-
-
-
-      
-
-    
     </div>
   `,
   styles: ``,
@@ -189,14 +182,14 @@ export class LivroCreate {
     private messageService: MessageService,
   ) {
     this.form = {
-      titulo: "Harry Potter e a Camara Secreta",
-      resumo: "Sonseria e Grifinória são as únicas casas de HP",
-      descricao: "Livro de Magia",
-      anoPublicacao: new Date("1998-01-01"),
-      autorId: 44,
-      categoriaId: 52,
-      isbn: "129-3-1030-1230-8",
-      quantidade: 100
+      titulo: "",
+      resumo: "",
+      descricao: "",
+      anoPublicacao: new Date(),
+      autorId: 0,
+      categoriaId: 0,
+      isbn: "",
+      quantidade: 0
     }
   }
 

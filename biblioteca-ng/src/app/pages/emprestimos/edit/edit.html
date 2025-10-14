@@ -1,0 +1,37 @@
+<div class="p-5">
+    <div class="flex w-full mw-full justify-content-evenly gap-2 mb-2">
+        <div class="flex-grow-1">
+            <label for="campo-usuario">Usuarios <span class="text-red-500">*</span></label>
+            <p-select [options]="usuarios" [(ngModel)]="form.usuarioId" optionLabel="nome" optionValue="id"
+                id="campo-usuario" [filter]="true" filterBy="nome" placeholder="Selecione a usuario"
+                class="w-full md:w-56" appendTo="body" />
+        </div>
+
+        <div class="flex-grow-1">
+            <label for="campo-livro">Livros <span class="text-red-500">*</span></label>
+            <p-select [options]="livros" [(ngModel)]="form.livroId" optionLabel="titulo" optionValue="id"
+                id="campo-livro" [filter]="true" filterBy="titulo" placeholder="Selecione o livro"
+                class="w-full md:w-56" appendTo="body" />
+        </div>
+
+    </div>
+    <div class="flex w-full mw-full justify-content-evenly gap-2 mb-2">
+        <div class="flex-grow-1">
+            <label for="campo-data-emprestimo">Data Emprestimo <span class="text-red-500">*</span></label>
+            <div class="card flex justify-center">
+                <p-datepicker [(ngModel)]="form.dataEmprestimo" />
+            </div>
+
+            <div class="flex-grow-1">
+                <label for="campo-data-devolucao">Data Devolução <span class="text-red-500">*</span></label>
+                <div class="card flex justify-center">
+                    <p-datepicker [(ngModel)]="form.dataDevolucao" />
+                </div>
+
+            </div>
+        </div>
+        <div class="flex pt-6 justify-content-between gap-2">
+            <p-button label="Salvar" (click)="salvar()" icon="pi pi-save" />
+        </div>
+
+    </div>
