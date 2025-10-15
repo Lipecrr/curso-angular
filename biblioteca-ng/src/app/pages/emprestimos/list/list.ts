@@ -5,6 +5,12 @@ import { CommonModule } from '@angular/common';
 import { EmprestimoService } from '../../../services/emprestimo.service';
 import { ButtonModule } from 'primeng/button';
 import { RouterLink } from '@angular/router';
+import { SelectModule } from 'primeng/select';
+import { FormsModule } from '@angular/forms';
+
+interface Status {
+  name: string;
+}
 
 @Component({
   selector: 'app-list',
@@ -13,12 +19,18 @@ import { RouterLink } from '@angular/router';
     CommonModule,
     ButtonModule,
     RouterLink,
+    SelectModule,
+    FormsModule,
   ],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
+
 export class EmprestimoList {
   emprestimos: EmprestimoResponse[] = [];
+
+  status: Status[] | undefined;
+  selectStatus: Status | undefined;
 
   constructor(private emprestimoService: EmprestimoService) {
   }
@@ -46,15 +58,4 @@ export class EmprestimoList {
       }
     })
   }
-
-  validarStatus(emprestimo: EmprestimoResponse): void {
-    const hoje = new Date();
-    const dataDevolucao? = emprestimo.dataDevolucao;
-
-    if (hoje > dataDevolucao!) {
-
-    }
-
-  }
-
 }
